@@ -1,9 +1,9 @@
-version: 0.2 
+version: 0.1 
    
 phases:     
   install:
-    runtime-versions: 
-      java: openjdk8  
+    runtime-versions:
+      java: openjdk8
     commands: 
       - echo Nothing to do in the install phase...
   pre_build: 
@@ -12,16 +12,13 @@ phases:
   build: 
     commands: 
       - echo Build started on `date` 
-      - cd openmrs-core/ && mvn clean install -Dmaven.test.skip=true && cd -
-      - cd openmrs-module-legacyui/ && mvn clean install -Dmaven.test.skip=true && cd -
+      - cd openmrs-module-legacyui/ &&mvn clean install -Dmaven.test.skip=true
   post_build: 
     commands: 
       - echo Build completed on `date` 
 artifacts: 
   files: 
-    - 'openmrs-core/webapp/target/openmrs.war'
-    - 'openmrs-module-legacyui/omod/target/legacyui-1.6.0-SNAPSHOT.omod'     
-    - 'scripts/init.sh' 
+    - 'omod/target/legacyui-1.6.0-SNAPSHOT.omod' 
     - 'appspec.yml'
-    - 'scripts/restart.sh'
+    - 'restart.sh'
  
