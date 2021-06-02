@@ -1,0 +1,25 @@
+version: 0.2 
+   
+phases:     
+  install:
+    runtime-versions:
+      java: openjdk8
+    commands: 
+      - echo Nothing to do in the install phase...
+  pre_build: 
+    commands: 
+      - echo Nothing to do in the pre_build phase... 
+  build: 
+    commands:
+      - echo Build started on `date` 
+      - cd openmrs-core/ && mvn clean install -Dmaven.test.skip=true
+  post_build: 
+    commands: 
+      - echo Build completed on `date` 
+artifacts: 
+  files: 
+    - 'webapp/target/openmrs.war' 
+    - 'init.sh' 
+    - 'appspec.yml' 
+    - 'load.sh'
+ 
